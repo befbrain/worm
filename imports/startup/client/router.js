@@ -1,45 +1,49 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
 import { render } from 'react-dom';
-import { FlowRouter } from 'meteor/kadira:flow-router'
+import { Roles } from 'meteor/alanning:roles';
+import { Router } from 'meteor/iron:router';
 
-import App from '/imports/ui/pages/App.jsx'
-import Login from '/imports/ui/pages/Login.jsx'
-import Header from '/imports/ui/includes/Header.jsx'
+import Home from '/imports/ui/pages/Home.jsx';
+import Login from '/imports/ui/pages/Login.jsx';
+import Header from '/imports/ui/includes/Header.jsx';
+import SAdminDashboard from '/imports/ui/pages/superadmin/SAdminDashboard.jsx';
 
-Tracker.autorun(function() {
-  FlowRouter.watchPathChange();
-  var currentContext = FlowRouter.current();
-  
-  if(FlowRouter._current.path == "/login") {
-    if(Meteor.user() != null) {
-        FlowRouter.go("/dashboard")
-    }
-  } else if(FlowRouter._current.path == "/dashboard") {
-    if(Meteor.user() == null) {
-        FlowRouter.go("/login")
-    }
-  }
+
+Router.route('/', function () {
+    render(<Header />, document.getElementById('top-target'));
+    render(<Home />, document.getElementById('react-target'));
 });
 
-FlowRouter.route('/', {
-    action: function(params) {
-        render(<Header />, document.getElementById('top-target'));
-        render(<App />, document.getElementById('react-target'));
-    }
-});
-
-FlowRouter.route('/login', {
-    action: function(params) {
-        render(<Header />, document.getElementById('top-target'));
+Router.route('/login', function () {
+    render(<Header />, document.getElementById('top-target'));
+    if(Meteor.userId() == null) {
         render(<Login />, document.getElementById('react-target'));
+    } else {
+        Router.go("/dashboard");
     }
 });
 
-FlowRouter.route('/dashboard', {
-    action: function(params) {
-        render(<Header />, document.getElementById('top-target'));
-        render(<Login />, document.getElementById('react-target'));
+Router.route('/dashboard', function () {
+    if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
+        Router.go("/sAdmin/dashboard");
     }
 });
+
+Router.route('/sAdmin/dashboard', function () {
+    render(<Header />, document.getElementById('top-target'));
+    if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
+        render(<SAdminDashboard />, document.getElementById('react-target'));
+    }
+});
+
+// FlowRouter.route('/dashboard', {
+//     action: function(params) {
+//         render(<Header />, document.getElementById('top-target'));
+        
+//         if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
+//             console.log("test")
+//             render(<Dashboard />, document.getElementById('react-target'));
+//         }
+//     }
+// });

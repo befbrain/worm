@@ -32,9 +32,15 @@ Router.route('/dashboard', function () {
 
 Router.route('/sAdmin/dashboard', function () {
     render(<Header />, document.getElementById('top-target'));
-    if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
-        render(<SAdminDashboard />, document.getElementById('react-target'));
+    console.log(Meteor.user())
+    if(Meteor.user() != null) {
+        if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
+            render(<SAdminDashboard />, document.getElementById('react-target'));
+        }
+    } else {
+        Router.go("/login");
     }
+    
 });
 
 // FlowRouter.route('/dashboard', {

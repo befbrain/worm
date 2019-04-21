@@ -39,7 +39,7 @@ export default class Login extends Component {
             <div>
                 <div id="errText" style={{"display":"none"}} className="alert alert-danger" role="alert"></div>
                 <div className="container">
-                    <form noValidate="novalidate" id="loginForm" className="formContainer blockCenter" onSubmit={this.submit}>
+                    <form style={{"max-width":"240px"}} noValidate="novalidate" id="loginForm" className="formContainer blockCenter" onSubmit={this.submit}>
                         <h5>Login</h5>
                         <div className="form-group">
                             <label htmlFor="emailOrUsername">Email/Username</label>
@@ -47,7 +47,7 @@ export default class Login extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="password" className="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter your password"/>
+                            <input type="password" className="form-control" id="password" placeholder="Enter your password"/>
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn btn-primary">Login</button>

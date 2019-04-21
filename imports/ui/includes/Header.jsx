@@ -14,7 +14,7 @@ export default class Header extends Component {
                     <a className="nav-link" href="/register">Register</a>
                 </li>
             </ul>
-        )
+        );
     } else {
         navBtns = ( 
             <ul className="navbar-nav">
@@ -22,7 +22,7 @@ export default class Header extends Component {
                     <a className="nav-link" onClick={ Meteor.logout }>Logout</a>
                 </li>
             </ul>
-        )
+        );
     }
     return (
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">

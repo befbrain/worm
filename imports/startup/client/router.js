@@ -8,7 +8,7 @@ import Home from '/imports/ui/pages/Home.jsx';
 import Login from '/imports/ui/pages/Login.jsx';
 import Header from '/imports/ui/includes/Header.jsx';
 import SAdminDashboard from '/imports/ui/pages/superadmin/SAdminDashboard.jsx';
-
+import SchoolRegister from '/imports/ui/pages/SchoolRegister.jsx'
 
 Router.route('/', function () {
     render(<Header />, document.getElementById('top-target'));
@@ -32,7 +32,7 @@ Router.route('/dashboard', function () {
 
 Router.route('/sAdmin/dashboard', function () {
     render(<Header />, document.getElementById('top-target'));
-    console.log(Meteor.user())
+    console.log(Meteor.user());
     if(Meteor.user() != null) {
         if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
             render(<SAdminDashboard />, document.getElementById('react-target'));
@@ -43,13 +43,11 @@ Router.route('/sAdmin/dashboard', function () {
     
 });
 
-// FlowRouter.route('/dashboard', {
-//     action: function(params) {
-//         render(<Header />, document.getElementById('top-target'));
-        
-//         if(Roles.userIsInRole(Meteor.userId(), ['superadmin'])) {
-//             console.log("test")
-//             render(<Dashboard />, document.getElementById('react-target'));
-//         }
-//     }
-// });
+Router.route('/register', function () {
+    render(<Header />, document.getElementById('top-target'));
+    if(Meteor.userId() == null) {
+        render(<SchoolRegister />, document.getElementById('react-target'));
+    } else {
+        Router.go("/dashboard");
+    }
+});

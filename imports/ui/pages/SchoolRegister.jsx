@@ -25,7 +25,6 @@ export default class SchoolRegister extends Component {
             $("#otherSchoolTypeContainer")[0].style.display = "none";
         }
     }
-    
     submit(e) {
         e.preventDefault();
         

@@ -6,7 +6,7 @@ export default class Login extends Component {
         super(props);
         this.render = this.render.bind(this);
     }
-    
+  
     submit(e){
         e.preventDefault();
         

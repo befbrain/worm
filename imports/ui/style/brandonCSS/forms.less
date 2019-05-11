@@ -1,0 +1,66 @@
+.inputGroup {
+    margin-bottom: 15px;
+    padding: 5px;
+    
+    input, select {
+        width: 100%;
+    }
+    
+    &:focus {
+        outline-color: @p-s-color;
+    }
+}
+
+.btn {
+    padding: 10px;
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background-color: @p-s-color;
+    color: #fff;
+    transition-duration: .25s;
+    
+    &:hover {
+        background-color: darken(@p-s-color, 8%);
+    }
+}
+
+.btn-error {
+    background-color: @err-color;
+    color: #fff;
+    transition-duration: .25s;
+    
+    &:hover {
+        background-color: darken(@err-color, 8%);
+    }
+}
+
+input {
+    border: 0px;
+    box-sizing: border-box;
+    font-size: 15px;
+    margin: 5px 0px 0px 0px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+select {
+    padding: 10px;
+    height: 38px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: @p-light;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 5px 0px 0px 0px;
+    font-size: 15px;
+}
+
+.errText {
+    color: @err-color;
+}

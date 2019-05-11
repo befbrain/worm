@@ -1,0 +1,56 @@
+.navbar-container {
+    position: fixed;
+    width: 100vw;
+    z-index: 2;
+}
+
+.navbar {
+    height: 56px;
+    width: 100%;
+    background-color: @s-bg-color;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    
+    a {
+        text-decoration: none;
+        color: @s-text-color;
+    }
+    
+    .navTitle {
+        font-size: 1.5rem;
+        width: fit-content;
+        float: left;
+        padding: 11px 20px;
+        color: @s-text-color;
+    }
+    
+    .links {
+        width: fit-content;
+        float: right;
+        padding: 0 20px;
+        
+        .link {
+            transition-duration: 0.25s;
+            height: 56px;
+            cursor: pointer;
+            text-align: center;
+            float: left;
+            
+            a {
+                text-decoration: none;
+                color: @s-s-color;
+                padding: 0 10px;
+                line-height: 56px;
+            }
+            
+            &:hover {
+                color: @s-text-color;
+                a {
+                    color: @s-text-color;
+                }
+            }
+        }
+        
+    }
+    
+    
+}

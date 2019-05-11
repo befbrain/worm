@@ -1,0 +1,68 @@
+.app {
+    padding-top: 56px;
+    transition-duration: .25s;
+}
+.app .main-container {
+    box-sizing: border-box;
+    width: ~"calc(100% - 50px)";
+    transition-duration: .25s;
+    margin-left: 50px;
+}
+
+.app .sidebar-container {
+    margin-left: 0px;
+    transition-duration: .25s;
+}
+
+.app.sidebar-active .main-container {
+    margin-left: 200px;
+    width: ~"calc(100% - 200px)";
+}
+.app.sidebar-hidden .main-container {
+    margin-left  : 0px;
+    width: 100%;
+}
+
+.app .sidebar-container {
+    width: 50px;
+}
+.app.sidebar-active .sidebar-container {
+    width: 200px;
+}
+.app.sidebar-hidden .sidebar-container {
+    margin-left: -50px;
+}
+.app.sidebar-hidden.sidebar-active .sidebar-container {
+    margin-left: -200px;
+}
+
+.main-container-overlay {
+    height: ~"calc(100vh - 56px)";
+    width: 100vw;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    background: @p-dark;
+    z-index: 1;
+    visibility: hidden;
+    transition: opacity .25s ease 0s, visibility 0s ease .25s;
+}
+
+@media only screen and ( max-width:575px ) {
+    .app.sidebar-active .main-container {
+        margin-left: 200px;
+        width: ~"calc(100% - 50px)";
+        display: block;
+    }
+    
+    .app.sidebar-active .main-container-overlay {
+        opacity: 0.7;
+        visibility: unset;
+        transition: opacity .25s ease 0s, display 0s ease .25s;
+    }
+}
+
+.contentContainer {
+    padding: 20px;
+}

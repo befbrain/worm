@@ -1,0 +1,95 @@
+.sidebar-container {
+    position: fixed;
+    z-index: 2;
+}
+
+.sidebar {
+    background: @s-bg-color;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    height: ~"calc(100vh - 56px)";
+    width: 100%;
+}
+
+.app.sidebar-hidden .sidebar {
+    box-shadow: none !important;
+}
+
+.sidebarItem {
+    transition-duration: .25s;
+    cursor: pointer;
+    height: 40px;
+    display: block;
+    
+    &:hover {
+        background: lighten(@s-bg-color, 7%);
+    }
+    
+    .sidebarItemIcon {
+        line-height: 40px;
+        color: @s-text-color;
+        display: block;
+        float: left;
+        width: 50px;
+        font-size: 18px;
+        text-align: center;
+        margin-right: 0px;
+    }
+    
+    .sidebarItemText {
+        color: @s-text-color;
+        display: block;
+        display: none;
+        padding: 9px 0;
+        text-align: center;
+        float: left;
+        
+        a {
+            color: @s-text-color;
+        }
+    }
+}
+
+.app.sidebar-active .sidebarItemText {
+    display: block;
+    margin-right: -50px;
+}
+
+.sidebarItem.itemActive {
+    background: lighten(@s-bg-color, 7%);
+}
+
+.sidebarToggleBtn {
+    transition-duration: .25s;
+    cursor: pointer;
+    height: 40px;
+    float: right;
+    text-align: center;
+    transition-duration: .25s;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    color: @s-text-color;
+    box-sizing: border-box;
+    width: 100%;
+    background: @s-dark;
+    
+    .sidebarItemIcon {
+        line-height: 40px;
+        color: @s-text-color;
+        display: block;
+        float: right;
+        transform: rotate(180deg);
+        width: 50px;
+        font-size: 18px;
+        text-align: center;
+        margin-right: 0px;
+    }
+    
+    &:hover {
+        background: darken(@s-dark, 8%)
+    }
+}
+
+.app.sidebar-active .sidebarItemIcon {
+    transform: rotate(0deg);
+}

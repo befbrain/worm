@@ -1,0 +1,24 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    
+    tr {
+        line-height: 2.5;
+        
+        td, th {
+            text-align: left;
+            padding: 0 10px;
+            min-width: fit-content;
+            white-space: nowrap;
+        }
+        
+    }
+    tr:nth-of-type(even) {
+        background: darken(@p-light, 10%);
+        
+    }
+}
+
+.tableContainer {
+    overflow-x: scroll;
+}
